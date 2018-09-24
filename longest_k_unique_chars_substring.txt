@@ -1,0 +1,47 @@
+def longest_k_unique_chars_substring(inStr,k):
+    inStrLen = len(inStr)
+    charsSeen = []
+    firstSeen = [None] * k
+    lastSeen = [None] * k
+    subStrLens = []
+    subStrs = []    
+    
+    if len(inStr) < k:
+        return -1
+    
+    idx = 0
+    while idx < inStrLen:
+        curChar = inStr[idx]
+        if curChar in charsSeen:
+            lastSeen[charsSeen.index(curChar)] = idx
+            idx = idx + 1
+        if curChar not in charsSeen and len(charsSeen) < k:
+            charsSeen.append(curChar)
+            firstSeen[charsSeen.index(curChar)] = lastSeen[charsSeen.index(curChar)] = idx
+            idx = idx + 1
+        if curChar not in charsSeen and len(charsSeen) == k:                           
+            subStrLens.append(max(lastSeen)+1 - min(firstSeen))            
+            lastSeenIdx = min(lastSeen)
+            subStrs.append(inStr[min(firstSeen):max(lastSeen)+1])            
+            charsSeen = []
+            lastSeen = [None]*k
+            firstSeen = [None]*k            
+            idx = lastSeenIdx +1   
+    if idx == inStrLen:
+            subStrLens.append(max(lastSeen)+1 - min(firstSeen))        
+            subStrs.append(inStr[min(firstSeen):max(lastSeen)+1])                       
+                           
+    if max(subStrLens) < k:
+        return - 1
+    
+    return max(subStrLens)
+            
+
+    
+    
+    
+T = int(input())
+for _ in range(T):
+    inputStr = input()
+    k = int(input())
+    print(longest_k_unique_chars_substring(inputStr,k))
