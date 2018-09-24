@@ -1,3 +1,16 @@
+#link to challenge: https://practice.geeksforgeeks.org/problems/longest-k-unique-characters-substring/0
+#------------------
+#Given a string you need to print the size of the longest possible substring that has exactly k unique characters. 
+#If there is no possible substring print -1.
+
+#Example
+#For the string aabacbebebe and k = 3 the substring will be cbebebe with length 7.
+
+#The first line of input contains an integer T denoting the no of test cases then T test cases follow. 
+#Each test case contains two lines . The first line of each test case contains a string s and the next line conatains an integer k.
+#------------------
+
+
 def longest_k_unique_chars_substring(inStr,k):
     inStrLen = len(inStr)
     charsSeen = []

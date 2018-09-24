@@ -1,3 +1,35 @@
+#https://practice.geeksforgeeks.org/problems/valid-substring/0
+
+#------------------------
+
+#Given a string S consisting only of opening and closing parenthesis 'ie '('  and ')', find out the length of the longest valid substring.
+
+#NOTE: Length of smallest the valid substring ( ) is 2.
+
+#Input
+#The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. 
+#The first line of each test case contains a string S consisting only of ( and ).
+
+#Output
+#Print out the length of the longest valid substring.
+
+#Examples 
+
+#Input
+#4
+#(()(
+#()()((
+#((()()())))
+#()(())(
+
+#Output
+#2
+#4
+#10
+#6
+
+#------------------------
+
 def find_max_len():
 	#get string input "())()()()(()))(()((((()))()()()())))"
 	arr = input()
@@ -26,4 +58,8 @@ def find_max_len():
 			else:
 				#if stack_index length equals 0 append end character substring index
 				stack_index.append(i)
-	print (final_out)
+	return final_out
+
+t = int(input())
+for _ in range(t):
+	print(find_max_len())
